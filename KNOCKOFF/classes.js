@@ -33,7 +33,7 @@ class Player{
 
     update(dt, platform){
         this.x += this.velX
-        if(this.y + this.height >= platform.y && this.x + this.width > platform.x && this.x < platform.x + platform.width && !this.y + this.height >= platform.y + platform.height){
+        if(this.y + this.height >= platform.y && this.x + this.width > platform.x && this.x < platform.x + platform.width && this.y + this.height <= platform.y + platform.height){
             this.velY = 0
             this.y = platform.y + 5 - this.height
         }else{
