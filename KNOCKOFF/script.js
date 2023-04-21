@@ -35,7 +35,7 @@ function animate(){
             continue
         }
         if(p1.bullets[i].x > p2.x && p1.bullets[i].x < p2.x + p2.width && p1.bullets[i].y > p2.y && p1.bullets[i].y < p2.y + p2.height){
-            console.log('HIT BY PLAYER 1')
+            p2.hit(p1.bullets[i].velX, p1.bullets[i].velY, p1.bullets[i].speed)
             p1.bullets.splice(i, 1)
             continue
         }
@@ -58,7 +58,7 @@ function animate(){
             continue
         }
         if(p2.bullets[i].x > p1.x && p2.bullets[i].x < p1.x + p1.width && p2.bullets[i].y > p1.y && p2.bullets[i].y < p1.y + p1.height){
-            console.log('HIT BY PLAYER 2')
+            p1.hit(p2.bullets[i].velX, p2.bullets[i].velY, p2.bullets[i].speed)
             p2.bullets.splice(i, 1)
             continue
         }
@@ -71,21 +71,25 @@ animate()
 
 addEventListener("keydown", (e) => {
     // Player 1
-    if(e.key.toLowerCase() == "a"){
-        p1.move(-1)
-    }
-    if(e.key.toLowerCase() == "d"){
-        p1.move(1)
+    if(p1.fallingBack == 0){
+        if(e.key.toLowerCase() == "a"){
+            p1.move(-1)
+        }
+        if(e.key.toLowerCase() == "d"){
+            p1.move(1)
+        }
     }
     if(e.key.toLowerCase() == "f"){
         p1.aiming = true
     }
     // Player 2
-    if(e.key == "ArrowLeft"){
-        p2.move(-1)
-    }
-    if(e.key == "ArrowRight"){
-        p2.move(1)
+    if(p2.fallingBack == 0){
+        if(e.key == "ArrowLeft"){
+            p2.move(-1)
+        }
+        if(e.key == "ArrowRight"){
+            p2.move(1)
+        }
     }
     if(e.key == " "){
         p2.aiming = true
@@ -103,7 +107,7 @@ addEventListener("keyup", (e) => {
     }
 
     if(e.key == "ArrowLeft" || e.key == "ArrowRight"){
-        p1.move(0)
+        p2.move(0)
     }
     if(e.key == " "){
         p2.aiming = false
