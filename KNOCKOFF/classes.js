@@ -27,8 +27,9 @@ class Player{
         this.gunX
         this.gunY
         this.gunWidth = this.width/2
-        this.gunLength = this.height/1.5
+        this.gunLength = this.height/1.6
         this.bullets = []
+        this.fallingBack = 0
     }
 
     draw(ctx){
@@ -52,22 +53,33 @@ class Player{
     }
 
     fire(angle){
+        let bulletSpeed = 10
         this.bullets.push({
             x: this.gunX,
             y: this.gunY,
-            velX: Math.cos((this.aimAngle + 90) * (Math.PI / 180)) * 10,
-            velY: Math.sin((this.aimAngle + 90) * (Math.PI / 180)) * 10
+            speed: bulletSpeed,
+            velX: Math.cos((this.aimAngle + 90) * (Math.PI / 180)) * bulletSpeed,
+            velY: Math.sin((this.aimAngle + 90) * (Math.PI / 180)) * bulletSpeed
         })
         console.log(this.bullets)
+    }
+
+    hit(bulletVelX, bulletVelY, bulletSpeed){
+        this.velX += bulletVelX * bulletSpeed / 10
+        this.velY += bulletVelY * bulletSpeed / 10
+        this.fallingBack = 10
     }
 
 
     update(ctx, dt, platform){
         this.draw(ctx)
-        if(this.aiming == false){
-            this.x += this.velX
-        }else{
-            this.velX = 0
+        this.x += this.velX
+        if(this.fallingBack > 0){
+            this.fallingBack -= 1
+            this.velX = this.velX/10*this.fallingBack
+            if(this.fallingBack == 0){
+                this.velX = 0
+            }
         }
         if(this.aiming == true){
             this.aimAngle += this.rotateDir * 2.5
