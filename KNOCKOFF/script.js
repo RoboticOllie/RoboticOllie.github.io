@@ -88,11 +88,11 @@ function animate(){
     p1ScoreCounter.innerHTML = p1.score
     p2ScoreCounter.innerHTML = p2.score
     if(p1.health <= 0){
-        p1.score += 1
+        p2.score += 1
         reset()
     }
     if(p2.health <= 0){
-        p2.score += 1
+        p1.score += 1
         reset()
     }
     requestAnimationFrame(animate)
