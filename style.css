@@ -3,60 +3,21 @@
     padding: 0;
 }
 
-canvas {
-    margin: 10px;
+.gameDiv {
+    display: inline-block;
     border: 1px solid black;
-    position: absolute;
-}
-
-.ui {
+    text-align: center;
+    width: 214px;
+    height: 214px;
     margin: 10px;
-    border: 1px solid rgba(0,0,0,0);
-    position: absolute;
-    width: 1000px;
-    height: 600px;
-    display: flex;
-    justify-content: center;
 }
 
-.scoreDiv {
-    width: 100px;
-    height: 100px;
-    margin-top: 10px;
-    background-color: #2a084d;
-    border: 3px solid #a6a6a6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #a6a6a6;
-    z-index: 100;
+.gameDiv img {
+    width: 200px;
+    height: 180px;
 }
 
-.score {
-    font-size: 30px;
-}
-
-.HealthBar{
-    width: 400px;
-    height: 40px;
-    margin-top: 40px;
-    background-color:#e1d3f5;
-    border: 2px solid #010b1c;
-    /* outline: 0.5px solid black; */
-}
-
-.Health {
-    height: inherit;
-}
-
-#p1Health{
-    float: right;
-    background-color: #ab1d1d;
-    border-right: none;
-}
-
-#p2Health{
-    float: left;
-    background-color: #1b79cc;
-    border-left: transparent;
+.gameDiv p {
+    font-size: 14px;
+    color: black;
 }
